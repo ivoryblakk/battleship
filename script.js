@@ -13,6 +13,18 @@ var shipData = [
   [null, null, null, null, null, null, null, null, null, null]
 ];
 
+var gameState = [
+  [null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null],
+  [null, null, null, null, null, null, null, null, null, null]
+];
 /*
 Carrier - 5
 Battleship -4
@@ -34,6 +46,23 @@ function createGameBoard() {
     gameBoard.appendChild(tableRow);
   }
 }
+function populateGameBoard(gameState) {
+  var gameBoard = document.getElementById('gameBoard');
+  for (var i = 0; i < gameState.length; i++) {
+    var row = gameBoard.children[i]; //tr in the html
+    console.log(row);
+    for (var j = 0; j < gameState[i].length; j++) {
+      var col = row.children[j]; //td in the html
+      console.log(col);
+      col.innerHTML = gameState[i][j];
+    }
+  }
+}
 window.onload = function() {
   createGameBoard();
+};
+var startButton = document.getElementById('startButton');
+startButton.onclick = function() {
+  alert('I clicked a button');
+  populateGameBoard(gameState);
 };
